@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AdherenceDash - WFM Schedule Adherence Tracker</title>
+<meta name="description" content="AdherenceDash tracks workforce management schedule adherence: per-agent and team adherence, missed minutes by activity, and daily trend. Demo with fictional data only.">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<header>
+  <h1>AdherenceDash</h1>
+  <p class="tagline">Schedule adherence for a contact center team, at a glance.</p>
+  <p class="demo-note">Demo with fictional agents and schedules - not real people, and not from any real employer.</p>
+</header>
+
+<main>
+  <section class="scoreboard" aria-label="Team summary">
+    <div class="score">
+      <span class="score-value" id="teamWeek">-</span>
+      <span class="score-label">team adherence this week</span>
+    </div>
+    <div class="score">
+      <span class="score-value" id="worstDay">-</span>
+      <span class="score-label">weakest day</span>
+    </div>
+    <div class="score">
+      <span class="score-value" id="bestAgent">-</span>
+      <span class="score-label">most consistent</span>
+    </div>
+    <div class="score">
+      <span class="score-value" id="focusAgent">-</span>
+      <span class="score-label">needs coaching focus</span>
+    </div>
+  </section>
+
+  <section class="card" aria-label="Agent adherence by day">
+    <h2>Adherence by agent and day</h2>
+    <table id="heatmap">
+      <thead><tr><th>Agent</th></tr></thead>
+      <tbody></tbody>
+    </table>
+    <p class="hint">Green 95%+, amber 85-95%, red under 85%. Adherence = share of intervals in the scheduled activity.</p>
+  </section>
+
+  <section class="card" aria-label="Missed minutes by activity">
+    <h2>Where the week was lost</h2>
+    <svg id="missedChart" role="img" aria-label="Missed minutes by scheduled activity"></svg>
+    <p class="hint">Missed minutes are counted against the scheduled activity that was not covered - e.g. late back from lunch counts as missed Phone time.</p>
+  </section>
+
+  <section class="card" aria-label="Team daily trend">
+    <h2>Team trend through the week</h2>
+    <svg id="trendChart" role="img" aria-label="Team adherence by day"></svg>
+  </section>
+</main>
+
+<footer>
+  <p>AdherenceDash demo. All agents, schedules, and events are fictional and generated in the browser. See the README for model limitations.</p>
+</footer>
+
+<script src="data.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
